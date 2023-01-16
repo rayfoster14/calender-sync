@@ -113,7 +113,5 @@ let insertEvent = async function(event){
 
 
 module.exports={
-
-    insertEvent,
-    
+    insertEvent
 }

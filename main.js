@@ -3,7 +3,11 @@ const https = require('https');
 const ical = require('node-ical');
 const google = require('./googleAuth.js');
 
-let {workURL,googleURL, description} = JSON.parse(fs.readFileSync('config.json'))
+if(!fs.existsSync('config.json')){
+  console.log('No config file found');
+  return false;
+}
+let {workURL,googleURL,description,name} = JSON.parse(fs.readFileSync('config.json'))
 
 let workIcs = '_work.ics'
 let googleIcs = '_google.ics'
@@ -69,7 +73,7 @@ let main = async function(){
     let workRaw = ical.sync.parseFile(workIcs);
     let workEvents = []
     for (const event of Object.values(workRaw)) {
-        if(event.summary && event.summary.indexOf('Ray Foster') !== -1){
+        if(event.summary && event.summary.indexOf(name) !== -1){
             workEvents.push({
             event:event.summary,
             start:event.start,

@@ -4,7 +4,7 @@
     "googleapis": "^105.0.0",
     "node-ical": "^0.15.3"
   },
-  "name": "bamboohr_googlecalender_sync",
+  "name": "calender_sync",
   "version": "1.0.0",
   "bin": "main.js",
   "devDependencies": {},
